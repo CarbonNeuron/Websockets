@@ -1,12 +1,11 @@
-import websockets, asyncio
+import asyncio
+import websockets
+
+
 async def server(websocket, path):
-    name = await websocket.recv()
-    print(f"< {name}")
+    pass
 
-    greeting = f"Hello {name}!"
+start_server = websockets.serve(server, '207.63.186.14', 8080)
 
-    await websocket.send(greeting)
-    print(f"> {greeting}")
-startserver = websockets.serve(server, 'localhost', 8765)
-asyncio.get_event_loop().run_until_complete(startserver)
+asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()
